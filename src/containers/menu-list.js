@@ -1,25 +1,27 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { selectBook } from "../actions/index";
+import { selectMenu } from "../actions/index";
 import { bindActionCreators } from "redux"
 
-class BookList extends Component{
+class MenuList extends Component{
 
     renderList(){
-        return this.props.books.map((book)=>{
+        return this.props.menus.map((menu)=>{
+            const source = require(`../assets/images/${menu.icon}`)
             return(
                 <li
-                    key={book.title}
-                    onClick={()=>this.props.selectBook(book)}
+                    key={menu.menu_type}
+                    onClick={() => this.props.selectMenu(menu)}
                     className="list-group-item">
-                    {book.title}
+                    <span className="menu_icon"><img src={source} alt="" height="30" width="30"/></span>
+                    { menu.menu_type }
                 </li>
             )
         });
     }
     render(){
         return(
-            <ul className="list-group col-sm-4">
+            <ul id="menu-list" className="list-group col-sm-4">
                 {this.renderList()}
             </ul>
         );
@@ -31,14 +33,14 @@ function mapStateToProps(state) {
      whaever is returned will show up as props
      */
     return{
-        books:state.books
+        menus:state.menus
     }
 }
 /*
  * Anything return from this function will end up as props on the booklist container
  * */
 function matchDispatchToProps(dispatch) {
-    return bindActionCreators({selectBook: selectBook}, dispatch)
+    return bindActionCreators({selectMenu: selectMenu}, dispatch)
 }
 
 /*
@@ -46,4 +48,4 @@ function matchDispatchToProps(dispatch) {
  *
  * Make it available as props
  */
-export default connect(mapStateToProps, matchDispatchToProps)(BookList);
+export default connect(mapStateToProps, matchDispatchToProps)(MenuList);

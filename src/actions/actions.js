@@ -1,0 +1,2 @@
+export const MENU_SELECTED = "MENU_SELECTED";
+export const MENU_ITEM_SELECTED = "MENU_ITEM_SELECTED";

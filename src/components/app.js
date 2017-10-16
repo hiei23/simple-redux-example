@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import BookList from "../containers/book-list"
-import BookDetail from "../containers/book-detail"
+import MenuList from "../containers/menu-list"
+import MenuDetail from "../containers/menu-detail"
 
 export default class App extends Component {
   render() {
     return (
       <div>
-          <BookList />
-          <BookDetail />
+          <MenuList />
+          <MenuDetail  />
       </div>
     );
   }
